@@ -9,8 +9,6 @@ provas_router = APIRouter(prefix="/provas")
 @provas_router.post("")
 def cria_prova(prova: Prova):
     with get_session() as session:
-
-        # verifica se a prova com a mesma descrição e data, já existe
         query = session.query(Prova).filter(
             Prova.descricao == prova.descricao,
             Prova.data_prova == prova.data_prova
